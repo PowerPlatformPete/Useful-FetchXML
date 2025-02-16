@@ -1,0 +1,15 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" savedqueryid="{QueryId}">
+  <entity name="systemuser">
+    <attribute name="fullname" />
+    <attribute name="systemuserid" />
+    <link-entity name="teammembership" from="systemuserid" to="systemuserid">
+      <link-entity name="team" from="teamid" to="teamid" alias="Team">
+        <attribute name="name" alias="TeamName" />
+        <filter>
+          <condition attribute="name" operator="eq" value="{TeamName}" />
+        </filter>
+      </link-entity>
+    </link-entity>
+    <order attribute="fullname" ascending="true" />
+  </entity>
+</fetch>
